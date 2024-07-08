@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicted GitHub Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #username, #predicted_dt, #predicted_rf, #user_preference, #suitable_stack {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .url-link {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predicted Scores</h1>
+    <div id="username">GitHub User Name: <span>{{ username }}</span></div>
+    <div id="predicted_dt">Predicted Industry Score (Decision Tree): <span>{{ predicted_score_dt }}</span></div>
+    <div id="predicted_rf">Predicted Industry Score (Random Forest): <span>{{ predicted_score_rf }}</span></div>
+    <div id="user_preference">According to User GitHub Bio: <span>{{ user_preference }}</span></div>
+    <div id="suitable_stack">According to GitHub User Data: <span>{{ suitable_stack }}</span></div>
+</body>
+</html>

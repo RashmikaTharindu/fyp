@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .upload-form {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .upload-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .upload-form input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .upload-form input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .upload-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function validateFile() {
+            const fileInput = document.getElementById('file');
+            const files = fileInput.files;
+            for (let i = 0; i < files.length; i++) {
+                const filePath = files[i].name;
+                const allowedExtensions = /(\.pdf)$/i;
+                if (!allowedExtensions.exec(filePath)) {
+                    alert('Please upload PDF files only.');
+                    fileInput.value = '';
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload PDF Files</h1>
+    <div class="upload-form">
+        <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="return validateFile()">
+            <label for="file">Choose PDF files:</label>
+            <input type="file" id="file" name="files" accept=".pdf" multiple required>
+            <br>
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+</body>
+</html>
